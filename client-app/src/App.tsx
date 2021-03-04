@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Header, Container, List } from 'semantic-ui-react'
 import axios from 'axios';
-import './App.css';
 
 const URL = "http://localhost:5000/api/Activities"
 
@@ -15,19 +15,19 @@ function App() {
       } catch (error) {
         console.log(error)
       }
-    } 
+    }
 
     getData()
-  },[])
+  }, [])
 
-  console.log(data, "hello")
   return (
-    <div className="App">
-     hello
-     <ul>
-       {data.map((item: any) => <li key={item.id}>{item.title}</li>)}
-     </ul>
-    </div>
+
+    <Container>
+      <Header as="h2" icon="users" content="DotNet Events" />
+      <List>
+        {data.map((item: any) => <List.Item key={item.id}>{item.title}</List.Item>)}
+      </List>
+    </Container>
   );
 }
 
